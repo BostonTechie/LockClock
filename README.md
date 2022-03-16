@@ -36,7 +36,9 @@
 <h3 align="center">LockClock</h3>
 
   <p align="center">
-    enter and track your team's time
+    Enter and track your team's time in the multifunctional app.  Create a team of people easily and have them sign into their unique account.  Users can track their time by project, by day, or by team. Time can be set as billable or not. The reporting functionality lets team easily track where they are against a budgeted total.
+
+
     <br />
     <a href="https://github.com/BostonTechie/LockClock-front"><strong>Explore the docs »</strong></a>
     <br />
@@ -92,15 +94,14 @@
 
 ### Built With - front end
    
-* [Next.js](https://nextjs.org/)
 * [React.js](https://reactjs.org/)
-* [Vue.js](https://vuejs.org/)
-* [Angular](https://angular.io/)
-* [Svelte](https://svelte.dev/)
-* [Laravel](https://laravel.com)
 * [Bootstrap](https://getbootstrap.com)
 * [JQuery](https://jquery.com)
 * [Material ui](https://mui.com/getting-started/installation/)
+* [Figma](https://www.figma.com/)
+* [Material ui](https://mui.com/getting-started/installation/)
+
+
 
 
 ### Built With - back end
@@ -134,16 +135,16 @@ This is an example of how to list things you need to use the software and how to
 
 ### Installation
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
+
+1. Clone the repo
    ```sh
    git clone https://github.com/BostonTechie/LockClock-front.git
    ```
-3. Install NPM packages
+2. Install NPM packages
    ```sh
    npm install
    ```
-4. Enter your API in `config.js`
+3. Enter your API in `config.js`
    ```js
    const API_KEY = 'ENTER YOUR API';
    ```
