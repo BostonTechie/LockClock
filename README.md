@@ -91,7 +91,7 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 
 
 ### Built With
-
+    #Front End 
 * [Next.js](https://nextjs.org/)
 * [React.js](https://reactjs.org/)
 * [Vue.js](https://vuejs.org/)
@@ -100,6 +100,17 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 * [Laravel](https://laravel.com)
 * [Bootstrap](https://getbootstrap.com)
 * [JQuery](https://jquery.com)
+
+    #Back End API
+* [python](https://www.python.org/)
+* [peewee](http://docs.peewee-orm.com/en/latest/)
+* [flask](https://www.fullstackpython.com/flask.html)
+* [flask b-crypt](https://www.educba.com/flask-bcrypt/)
+* [postman](https://www.postman.com/)
+* [Postgres](https://www.postgresql.org/)
+
+
+
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
