@@ -36,7 +36,7 @@
 <h3 align="center">LockClock</h3>
 
   <p align="center">
-    Enter and track your team's time in the multifunctional app.  Create a team of people easily and have them sign into their unique account.  Users can track their time by project, by day, or by team. Time can be set as billable or not. The reporting functionality lets team easily track where they are against a budgeted total.
+    Enter and track your team's time in the multifunctional app.  Create a team of people easily and have them sign into their unique account.  Users can track their time by project, by day, or by team. Time can be set as billable or not. The reporting functionality lets team easily track where they are against a budgeted total. </p>
 
 
     <br />
