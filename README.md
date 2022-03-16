@@ -33,10 +33,10 @@
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
-<h3 align="center">project_title</h3>
+<h3 align="center">LockClock</h3>
 
   <p align="center">
-    project_description
+    enter and track your team's time
     <br />
     <a href="https://github.com/BostonTechie/LockClock-front"><strong>Explore the docs »</strong></a>
     <br />
@@ -84,14 +84,14 @@
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `github_username`, `repo_name`, `twitter_handle`, `linkedin_username`, `email_client`, `email`, `project_title`, `project_description`
+
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
 
-### Built With
-    #Front End 
+### Built With - front end
+   
 * [Next.js](https://nextjs.org/)
 * [React.js](https://reactjs.org/)
 * [Vue.js](https://vuejs.org/)
@@ -100,8 +100,10 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 * [Laravel](https://laravel.com)
 * [Bootstrap](https://getbootstrap.com)
 * [JQuery](https://jquery.com)
+* [Material ui](https://mui.com/getting-started/installation/)
 
-    #Back End API
+
+### Built With - back end
 * [python](https://www.python.org/)
 * [peewee](http://docs.peewee-orm.com/en/latest/)
 * [flask](https://www.fullstackpython.com/flask.html)
@@ -205,7 +207,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - andrewurq@gmail.com
+Your Name - [@](https://twitter.com/) - andrewurq@gmail.com
 
 Project Link: [https://github.com/BostonTechie/LockClock-front](https://github.com/BostonTechie/LockClock-front)
 
