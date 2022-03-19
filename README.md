@@ -99,7 +99,7 @@
 * [JQuery](https://jquery.com)
 * [Material ui](https://mui.com/getting-started/installation/)
 * [Figma](https://www.figma.com/)
-* [Material ui](https://mui.com/getting-started/installation/)
+
 
 
 
@@ -111,6 +111,8 @@
 * [flask b-crypt](https://www.educba.com/flask-bcrypt/)
 * [postman](https://www.postman.com/)
 * [Postgres](https://www.postgresql.org/)
+* [django](https://www.djangoproject.com/)
+
 
 
 
