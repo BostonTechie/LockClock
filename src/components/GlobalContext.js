@@ -6,7 +6,7 @@ const GlobalContext = createContext();
 
 export const FuncGlobalContext = ({ children }) => {
   const navigate = useNavigate();
-  const baseURL = process.env.REACT_APP_API
+  const baseURL = 'http://127.0.0.1:8000/api/v1'
 
   const [registerPassword, setRegisterPassword] = useState("");
   const [registerEmail, setRegisterEmail] = useState("");
@@ -15,14 +15,18 @@ export const FuncGlobalContext = ({ children }) => {
     axios({
       method: "POST",
       data: {
-        password: registerPassword,
         email: registerEmail,
+        password: registerPassword,
+        
       },
       withCredentials: true,
       url: `${baseURL}/users/register`,
     }).then((res) => {
+      
       console.log(res)
-      localStorage.setItem("user", res.data)
+      // localStorage.setItem("user", res.data)
+    }).catch((err)=> {
+      console.log('here is your error: ', err)
     });
   };
 

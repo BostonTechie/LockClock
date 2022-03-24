@@ -34,7 +34,8 @@ const Home = () => {
               type="text"
               name="email"
               id='email'
-              onChange={(e) => setRegisterEmail(e.target.value)}
+              onChange={(e) => {setRegisterEmail(e.target.value)
+              console.log(e.target.value)}}
             />
             <FormInput
               // width={"60%"}
@@ -42,7 +43,7 @@ const Home = () => {
               type="password"
               name="password"
               id='password'
-              onChange={(e) => setRegisterPassword(e.target.value)}
+              onChange={(e) => setRegisterPassword(setRegisterEmail)}
             />
             
             <AppButton
