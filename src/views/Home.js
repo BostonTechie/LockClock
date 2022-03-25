@@ -34,6 +34,7 @@ const Home = () => {
               type="text"
               name="email"
               id='email'
+             
               onChange={(e) => {setRegisterEmail(e.target.value)
               console.log(e.target.value)}}
             />
@@ -42,6 +43,7 @@ const Home = () => {
               placeholder="Password"
               type="password"
               name="password"
+              
               id='password'
               onChange={(e) => setRegisterPassword(setRegisterEmail)}
             />

@@ -12,22 +12,47 @@ export const FuncGlobalContext = ({ children }) => {
   const [registerEmail, setRegisterEmail] = useState("");
 
   const register = () => {
-    axios({
-      method: "POST",
-      data: {
-        email: registerEmail,
-        password: registerPassword,
-        
-      },
-      withCredentials: true,
-      url: `${baseURL}/users/register`,
-    }).then((res) => {
+
+    fetch(`${baseURL}/users/register`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        'email': 'password'
+      }),
+    })
       
-      console.log(res)
-      // localStorage.setItem("user", res.data)
-    }).catch((err)=> {
-      console.log('here is your error: ', err)
-    });
+    
+    .then(res => {
+        return res.json()
+      })
+      .then(data => {
+        console.log(data)
+      })
+
+    // const config = {headers:{"Content-Type": "application/json" } } 
+    // const payload = {email: registerEmail,
+    //  password: registerPassword}
+    // axios.post(`${baseURL}/users/register`,payload,config)
+    
+    
+    
+    
+    // axios({
+    //   method: "POST",
+    //   data: {
+    //     email: registerEmail,
+    //     password: registerPassword,
+        
+    //   },
+    //   withCredentials: true,
+    //   url: `${baseURL}/users/register`,
+    // }).then((res) => {
+    //   //ggg
+    //   console.log(res)
+    //    localStorage.setItem("user", res.data)
+    // }).catch((err)=> {
+    //   console.log('here is your error: ', err)
+    // });
   };
 
   return (
