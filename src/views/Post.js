@@ -37,7 +37,7 @@ const IMG = styled('img')(() => ({
 
 const Post = () => {
     
-    const baseURL = 'http://localhost:8000'
+    const baseURL = 'http://localhost:8000/api/v1/users'
     const [userEmail, setUserEmail] = useState([])
     const [userPass, setUserPass] = useState([])
 
