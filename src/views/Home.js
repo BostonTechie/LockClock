@@ -4,11 +4,11 @@ import { Card, Item, Chip, Container, styled, Box, Paper, Grid, Typography, Line
 
 const Home = () => {
     
-const baseURL = 'http://localhost:8000'
+const baseURL = 'http://localhost:8000/api/v1/users'
 const [userView, setUserView] = useState([])
 
 const retrieveUser = async () => {
-  const url = `${baseURL}/get`
+  const url = `${baseURL}`
   const userData = await axios.get(url)
   setUserView(userData.data.data)
 }
@@ -16,7 +16,6 @@ const retrieveUser = async () => {
 useEffect(() => {
   retrieveUser()
 }, [])
-
 
 
 
