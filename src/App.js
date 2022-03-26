@@ -1,5 +1,6 @@
 import { Routes, Route } from 'react-router-dom'
 import Home from "./views/Home";
+import Post from './views/Post'
 
 function App() {
   return (
@@ -7,6 +8,7 @@ function App() {
     <div className="App">
       <Routes>
         <Route path='/' element={<Home/>} />
+        <Route path='/post' element={<Post/>} />
       </Routes>
     </div>
    

@@ -1,7 +1,15 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
+
+const baseURL = 'http://localhost:8000'
+
 
 const Post = () => {
-  return (
+    
+    const baseURL = 'http://localhost:8000'
+    const [userEmail, setUserEmail] = useState([])
+  
+    return (
     <div>Post</div>
   )
 }
