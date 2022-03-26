@@ -3,6 +3,7 @@ import axios from 'axios'
 import { Box, styled, useTheme } from '@mui/system'
 import { AppButton } from '../styled/Button,styled';
 import { FormInput } from '../styled/form.styled';
+import Logout from '../components/Logout';
 import {
     Card,
     Grid,
@@ -48,7 +49,7 @@ const Post = () => {
             email: userEmail,
             password: userPass,
           },
-          //withCredentials: true,
+          withCredentials: true,
           url: `${baseURL}/register`,
         }).then((res) => {
           console.log(res)
@@ -84,7 +85,8 @@ const Post = () => {
                 id="submituser"
                 onClick={register}
             >Sign Up Now!</AppButton>
-          
+           
+           <Logout></Logout>
         </ContentBox>
   )
 }
