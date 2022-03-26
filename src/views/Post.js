@@ -35,18 +35,18 @@ const IMG = styled('img')(() => ({
 }))
 
 
-
-
 const Post = () => {
     
     const baseURL = 'http://localhost:8000'
     const [userEmail, setUserEmail] = useState([])
+    const [userPass, setUserPass] = useState([])
 
     const register = () => {
         axios({
           method: "POST",
           data: {       
             email: userEmail,
+            password: userPass,
           },
           //withCredentials: true,
           url: `${baseURL}/register`,
@@ -65,6 +65,14 @@ const Post = () => {
                 id='email'
                 
                 onChange={(e) => {setUserEmail(e.target.value)}}
+            />
+            <FormInput
+                placeholder="Password"
+                type="password"
+                name="password"
+                id='password'
+                
+                onChange={(e) => {setUserPass(e.target.value)}}
             />
                  
             <AppButton

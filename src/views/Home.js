@@ -23,7 +23,7 @@ useEffect(() => {
   const userDisplay = (
     userView?.map((q) =>{
       return (
-          <div key={q.id}> {q.email} </div>
+          <div key={q.id}> email: {q.email} password:{q.password}</div>
        )
     })
   )
