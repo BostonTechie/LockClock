@@ -1,20 +1,15 @@
 import { Routes, Route } from 'react-router-dom'
-import Homepage from './views/Homepage';
-import Home from './views/Home';
-import './App.css';
-import { FuncGlobalContext } from './components/GlobalContext'
+import Home from "./Home";
 
 function App() {
   return (
-    <FuncGlobalContext>
-      <div className="App">
-        <Routes>
-          <Route path='/' element={<Homepage />} />
-
-          <Route path='/home' element={<Home/>} />
+    
+    <div className="App">
+      <Routes>
+        <Route path='/' element={<Home/>} />
         </Routes>
-      </div>
-    </FuncGlobalContext >
+    </div>
+   
   );
 }
 
