@@ -71,6 +71,20 @@ const Post = () => {
           console.log(res)
         });
       };
+
+      const login = () => {
+        axios({
+          method: "POST",
+          data: {       
+            email: userEmail,
+            password: userPass,
+          },
+          withCredentials: true,
+          url: `${globalUrl}/users/login`,
+        }).then((res) => {
+          console.log(res)
+        });
+      };
   
     return (
         <ContentBox>
@@ -101,6 +115,16 @@ const Post = () => {
                 id="submituser"
                 onClick={register}
             >Sign Up Now!</AppButton>
+
+<AppButton
+                bg="#292929"
+                bcolor="#fff"
+                color="#fff"
+                className="newUserBttn"
+                type="submit"
+                id="submituser"
+                onClick={login}
+            >Login!</AppButton>
            
            <Logout></Logout>
         </ContentBox>
