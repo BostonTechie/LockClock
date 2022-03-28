@@ -1,5 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
+import UserContext from '../components/UserContext';
 import axios from 'axios'
+import {globalUrl} from '../global/Global'
 import { Box, styled, useTheme } from '@mui/system'
 import { AppButton } from '../styled/Button,styled';
 import { FormInput } from '../styled/form.styled';
@@ -13,7 +15,7 @@ import {
     FormControlLabel,
 } from '@mui/material'
 
-const baseURL = 'http://localhost:8000'
+
 
 const FlexBox = styled(Box)(() => ({
     display: 'flex',
@@ -37,10 +39,24 @@ const IMG = styled('img')(() => ({
 
 
 const Post = () => {
+ 
     
-    const baseURL = 'http://localhost:8000/api/v1/users'
-    const [userEmail, setUserEmail] = useState([])
-    const [userPass, setUserPass] = useState([])
+  const [userEmail, setUserEmail] = useState([])
+  const [userPass, setUserPass] = useState([])
+    
+  
+
+  const signIn = () => {
+      axios({
+        method: "POST",
+        data: {       
+          email: userEmail,
+          password: userPass,
+        },
+        withCredentials: true,
+        url: `${globalUrl}/login`,
+      })
+    }
 
     const register = () => {
         axios({
@@ -50,7 +66,7 @@ const Post = () => {
             password: userPass,
           },
           withCredentials: true,
-          url: `${baseURL}/register`,
+          url: `${globalUrl}/users/register`,
         }).then((res) => {
           console.log(res)
         });

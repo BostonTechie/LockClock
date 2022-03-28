@@ -1,14 +1,19 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
+import UserContext from '../components/UserContext';
 import axios from 'axios'
 import { Card, Item, Chip, Container, styled, Box, Paper, Grid, Typography, LinearProgress } from '@mui/material';
+import {globalUrl} from '../global/Global'
+
 
 const Home = () => {
-    
-const baseURL = 'http://localhost:8000/api/v1/users'
+
+  const {Url } = useContext(UserContext)
+
 const [userView, setUserView] = useState([])
 
 const retrieveUser = async () => {
-  const url = `${baseURL}`
+  const url = `${globalUrl}/users
+`
   const userData = await axios.get(url)
   setUserView(userData.data.data)
 }
