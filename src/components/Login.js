@@ -47,9 +47,10 @@ async function loginUser(credentials) {
          </label>
          <div>
            <button type="submit">Submit</button>
-           <Logout></Logout>
+          
          </div>
        </form>
+       <Logout></Logout>
      </div>
    )
  }

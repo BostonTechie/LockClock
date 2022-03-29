@@ -6,9 +6,6 @@ import {globalUrl} from '../global/Global'
 import { Link, Navigate, useNavigate, Switch } from "react-router-dom";
 
 
-
-
-
 const UsersShow = () => {
 
   const {Url } = useContext(UserContext)

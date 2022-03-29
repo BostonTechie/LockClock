@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import {BrowserRouter, Routes, Route, Link} from 'react-router-dom'
 import { UserProvider } from './components/UserContext';
 import {
@@ -10,6 +10,7 @@ import {
 } from 'recoil';
 import './styled/App.css'
 import useToken from './components/useToken';
+import './styled/App.css'
 
 
 // import views
@@ -21,24 +22,20 @@ import Preferences from './components/Preference';
 import PageNotFound from './views/PageNotFound';
 import Login from './components/Login';
 
-function setToken(userToken) {
-  sessionStorage.setItem('token', JSON.stringify(userToken));
-  console.log("here is user token", userToken)
-}
 
-function getToken() {
-  const tokenString = sessionStorage.getItem('token');
-  const userToken = JSON.parse(tokenString);
-  return userToken?.token
-  console.log("here is user token", userToken)
-}
 
 function App() {
-  const { token, setToken } = useToken();
-  
-  if(!token) {
-    return <Login setToken={setToken} />
-  }
+const { token, setToken } = useToken();
+
+useEffect(() => {
+  const token = sessionStorage.getItem('token');
+  console.log('here is token from session', token)
+})
+
+
+  // if(!token) {
+  //   return <Login setToken={setToken} />
+  //  }
 
 
   return (
@@ -46,14 +43,14 @@ function App() {
     <div className="wrapper">
       <h1>Application</h1>
       <Routes>
-          
-          <Route path="/dashboard" element={<Dashboard/>}/>
+          <Route path="/login" element={<Login setToken={setToken}/>}/>
+          <Route path="/" element={<Dashboard/>} />
           <Route path="/preferences" element={<Preferences/>}/>
           <Route path='/:userid' element={<UserProfile/>} />
           <Route path='user/:userid' element={<UserProfile/>} />
           <Route path='/show' element={<UsersShow/>} />
-          <Route path='/post' element={<Post/>} />
-          {/* <Route path="*" element={<PageNotFound/>}/> */}
+          <Route path='/post' element={<Post/>} /> 
+          <Route path="*" element={<PageNotFound/>}/> 
                   
       </Routes>
       </div>

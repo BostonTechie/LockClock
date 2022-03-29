@@ -1,3 +1,8 @@
+to do get .env to work
+get an if "session" to work
+find a sql cloud for data
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
