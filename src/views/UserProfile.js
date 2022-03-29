@@ -8,37 +8,21 @@ import { Link, Navigate, useNavigate } from "react-router-dom";
 
 
 
-const UsersShow = () => {
+const UserProfile = () => {
 
   const {Url } = useContext(UserContext)
 
 const [userView, setUserView] = useState([])
 
-const retrieveUser = async () => {
+const retrieveUser = async (id) => {
   const url = `${globalUrl}/users`
   const userData = await axios.get(url)
   setUserView(userData.data.data)
 }
     
-useEffect(() => {
-  retrieveUser()
-}, [])
-
-
-
-  const userDisplay = (
-    userView?.map((q) =>{
-      return (
-         <div key={q.id}> <Link to={`/users/${q._id}`} > id: {q.id} email: {q.email} password:{q.password}</Link> </div>
-       )
-    })
-  )
-
-
-
-  return (
-    <div>{userDisplay}</div>
+ return (
+    <div>hello</div>
   )
 }
 
-export default UsersShow
+export default UserProfile
