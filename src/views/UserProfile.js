@@ -1,28 +1,66 @@
 import React, { useState, useEffect, useContext } from 'react'
 import UserContext from '../components/UserContext';
 import axios from 'axios'
-import { Card, Item, Chip, Container, styled, Box, Paper, Grid, Typography, LinearProgress } from '@mui/material';
+import {
+  Card,
+  Grid,
+  Button,
+  Checkbox,
+  CircularProgress,
+  FormControlLabel,
+} from '@mui/material'
+
 import {globalUrl} from '../global/Global'
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
+import { Box, styled, useTheme } from '@mui/system'
+import { AppButton } from '../styled/Button,styled';
+import { FormInput } from '../styled/form.styled';
 
+const FlexBox = styled(Box)(() => ({
+  display: 'flex',
+  alignItems: 'center',
+}))
 
+const JustifyBox = styled(FlexBox)(() => ({
+  justifyContent: 'center',
+}))
+
+const ContentBox = styled(Box)(() => ({
+  height: '100%',
+  padding: '32px',
+  position: 'relative',
+  background: 'rgba(0, 0, 0, 0.01)',
+}))
+
+const IMG = styled('img')(() => ({
+  width: '100%',
+}))
 
 
 const UserProfile = () => {
 
-  const {Url } = useContext(UserContext)
+const [userView, setProfileView] = useState([])
+let {userid} = useParams()
 
-const [userView, setUserView] = useState([])
 
-const retrieveUser = async (id) => {
-  const url = `${globalUrl}/users`
-  const userData = await axios.get(url)
-  setUserView(userData.data.data)
+const retrieveProfile = async () => {
+  
+  const url = `${globalUrl}/users/${userid}`
+  const userView = await axios.get(url)
+  setProfileView(userView.data.data)
 }
     
- return (
-    <div>hello</div>
-  )
+
+useEffect(() => {
+  retrieveProfile()
+}, [])
+
+
+
+
+return (
+  <div key={userView.id}> <Link to={`/user/${userView.id}`} > id: {userView.id} email: {userView.email} password:{userView.password}</Link> </div>
+)
 }
 
 export default UserProfile

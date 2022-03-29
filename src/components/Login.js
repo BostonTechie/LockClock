@@ -1,29 +1,55 @@
-import React from 'react'
-import { AppButton } from '../styled/Button,styled';
-import axios from 'axios'
+import React, { useState } from 'react';
+import '../styled/login.css';
+import PropTypes from 'prop-types';
+import { FormInput } from '../styled/form.styled';
+import {globalUrl} from '../global/Global'
 
+async function loginUser(credentials) {
+  return fetch(`${globalUrl}/users/register`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(credentials)
+  })
+    .then(data => data.json())
+ }
 
-const Login = () => {
-    const baseURL = 'http://localhost:8000/api/v1/users'
-    const signIn = () => {
-        axios({
-          method: "GET",
-          withCredentials: true,
-          url: `${baseURL}/login`,
-        })
-      };
+export default function Login({ setToken }) {
+  
 
-  return (
-    <AppButton
-    bg="#292929"
-    bcolor="#fff"
-    color="#fff"
-    className="newUserBttn"
-    type="submit"
-    id="submituser"
-    onClick={signIn}
-    >Log in</AppButton>
+  const [email, setUserEmail] = useState();
+  const [password, setUserPass] = useState();
+
+  const handleSubmit = async e => {
+    e.preventDefault();
+    const token = await loginUser({
+      email,
+      password
+    });
+    setToken(token);
+  }
+
+  return(
+    <div className="login-wrapper">
+    <h1>Please Log In</h1>
+    <form onSubmit={handleSubmit}>
+      <label>
+        <p>E-Mail</p>
+        <FormInput type="text" onChange={e => setUserEmail(e.target.value)}/>
+      </label>
+      <label>
+        <p>Password</p>
+        <FormInput type="password" onChange={e => setUserPass(e.target.value)} />
+      </label>
+      <div>
+        <button type="submit">Submit</button>
+      </div>
+    </form>
+    </div>
   )
 }
 
-export default Login
+Login.propTypes = {
+  setToken: PropTypes.func.isRequired
+}
