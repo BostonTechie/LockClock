@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import '../styled/login.css';
 import PropTypes from 'prop-types';
+import Form from "react-bootstrap/Form";
 import { FormInput } from '../styled/form.styled';
 import {globalUrl} from '../global/Global'
 import axios from 'axios'
 import Logout from './Logout';
+import { useAppContext } from '../global/Session'
 
 
 async function loginUser(credentials) {
@@ -20,6 +22,8 @@ async function loginUser(credentials) {
  }
  
  export default function Login({ setToken }) {
+
+  const { userHasAuthenticated } = useAppContext();
    const [email, setEmail] = useState();
    const [password, setPassword] = useState();
  
@@ -55,6 +59,3 @@ async function loginUser(credentials) {
    )
  }
  
- Login.propTypes = {
-   setToken: PropTypes.func.isRequired
- };

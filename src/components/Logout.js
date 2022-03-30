@@ -1,8 +1,10 @@
 import React from 'react'
 import { AppButton } from '../styled/Button,styled';
+import { useAppContext } from "../global/Session";
 import axios from 'axios'
 
 const Logout = () => {
+    const { userHasAuthenticated } = useAppContext();
     const baseURL = 'http://localhost:8000/api/v1/users'
     const signOut = () => {
         axios({
@@ -11,6 +13,7 @@ const Logout = () => {
           url: `${baseURL}/logout`,
         }).then((res) => {
           console.log(res)
+          userHasAuthenticated(false)
         });
       };
 
