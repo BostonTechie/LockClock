@@ -2,6 +2,8 @@ aside {
     width: 10%;
     padding-left: 0px;
     margin-left: 0px;
+    Margin-top: 1rem;
     float: left;
     background-color: lightgray;
+    height: 100vh;
   }
