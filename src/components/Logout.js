@@ -5,19 +5,22 @@ import axios from 'axios'
 
 const Logout = () => {
     const { userHasAuthenticated } = useAppContext();
-    const baseURL = 'http://localhost:8000/api/v1/users'
+    const baseURL = process.env.REACT_APP_API
+   
     const signOut = () => {
         axios({
           method: "Get",
           withCredentials: true,
-          url: `${baseURL}/logout`,
+          url: `${baseURL}/users/logout`,
         }).then((res) => {
-          console.log(res)
+    
           userHasAuthenticated(false)
         });
       };
 
-  return (
+  return (<>
+    <h3>Come back soon!</h3>
+
     <AppButton
     bg="#292929"
     bcolor="#fff"
@@ -27,6 +30,7 @@ const Logout = () => {
     id="submituser"
     onClick={signOut}
     >Sign Out!</AppButton>
+    </>
   )
 }
 

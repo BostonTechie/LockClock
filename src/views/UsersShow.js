@@ -1,18 +1,17 @@
 import React, { useState, useEffect, useContext } from 'react'
 import axios from 'axios'
 import { Card, Item, Chip, Container, styled, Box, Paper, Grid, Typography, LinearProgress } from '@mui/material';
-import {globalUrl} from '../global/Global'
 import { Link, Navigate, useNavigate, Switch } from "react-router-dom";
 
 
 const UsersShow = () => {
 
  
-
+  const baseURL = process.env.REACT_APP_API
 const [userView, setUserView] = useState([])
 
 const retrieveUser = async () => {
-  const url = `${globalUrl}/users`
+  const url = `${baseURL}/users`
   const userData = await axios.get(url,{ withCredentials: true })
   setUserView(userData.data.data)
 }

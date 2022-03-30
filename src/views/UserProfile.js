@@ -9,7 +9,6 @@ import {
   FormControlLabel,
 } from '@mui/material'
 
-import {globalUrl} from '../global/Global'
 import {Link, useParams} from "react-router-dom";
 import { Box, styled, useTheme } from '@mui/system'
 import { AppButton } from '../styled/Button,styled';
@@ -41,10 +40,11 @@ const UserProfile = () => {
 const [userView, setProfileView] = useState([])
 let {userid} = useParams()
 
+const baseURL = process.env.REACT_APP_API
 
 const retrieveProfile = async () => {
   
-  const url = `${globalUrl}/users/${userid}`
+  const url = `${baseURL}/users/${userid}`
   const userView = await axios.get(url,{ withCredentials: true })
   setProfileView(userView.data.data)
 }

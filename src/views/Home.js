@@ -10,7 +10,7 @@ export default function Home() {
         <h1>Fuse Clock</h1>
         <p className="text-muted">A simple way for you and your team to track time for a project</p>
       </div>
-      <Logout>Where am i</Logout>
+     
     </div>
   );
 }

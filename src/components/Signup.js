@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import '../styled/login.css';
-import {globalUrl} from '../global/Global'
 import PropTypes from 'prop-types';
 import { useAppContext } from "../global/Session";
 import Logout from "./Logout";
@@ -12,12 +11,14 @@ export default function Signup() {
   const [password, setPassword] = useState("");
   const { userHasAuthenticated } = useAppContext(false);
 
+  const baseURL = process.env.REACT_APP_API
+
   function validateForm() {
     return email.length > 0 && password.length > 0;
   }
 
   async function loginUser(credentials) {
-    return fetch(`${globalUrl}/users/register`, {
+    return fetch(`${baseURL}/users/register`, {
       credentials: 'include',
       method: 'POST',
       headers: {
