@@ -13,7 +13,7 @@ const [userView, setUserView] = useState([])
 
 const retrieveUser = async () => {
   const url = `${globalUrl}/users`
-  const userData = await axios.get(url)
+  const userData = await axios.get(url,{ withCredentials: true })
   setUserView(userData.data.data)
 }
     
