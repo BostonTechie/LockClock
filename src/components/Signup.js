@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import { useAppContext } from "../global/Session";
 import Logout from "./Logout";
 
-export default function NewLogin() {
+export default function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { userHasAuthenticated } = useAppContext(false);
@@ -61,10 +61,10 @@ export default function NewLogin() {
           />
         </Form.Group>
         <Button block size="lg" type="submit" disabled={!validateForm()}>
-          Login
+          Sign up!
         </Button>
       </Form>
-      <Logout></Logout>
+      
 
     </div>
   );

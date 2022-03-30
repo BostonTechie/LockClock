@@ -11,8 +11,10 @@ import { LinkContainer } from "react-router-bootstrap"
 import UsersShow from "./views/UsersShow";
 import UserProfile from './views/UserProfile';
 import PageNotFound from './views/PageNotFound';
-import NewLogin from './components/Newlogin';
+import Login from './components/Login';
+import Signup from './components/Signup';
 import Home from './views/Home';
+import Logout from './components/Logout';
 import './styled/App.css'
 
 
@@ -37,6 +39,9 @@ return (
           <LinkContainer to="/login">
             <Nav.Link>Login</Nav.Link>
           </LinkContainer>
+          <LinkContainer to="/logout">
+            <Nav.Link>Logout</Nav.Link>
+          </LinkContainer>
         </Nav>
       </Navbar.Collapse>
     </Navbar>
@@ -45,7 +50,9 @@ return (
     <AppContext.Provider value={{ isAuthenticated, userHasAuthenticated }}>
       <Routes>
         <Route path="/" element={<Home/>}/>
-        <Route path='/login' element={<NewLogin/>}/>
+        <Route path='/login' element={<Login/>}/>
+        <Route path='/signup' element={<Signup/>}/>
+        <Route path='/logout' element={<Logout/>}/>
         <Route path='/show' element={<UsersShow/>}/>
         <Route path='/profile/:userid' element={<UserProfile/>}/>
         <Route path="*" element={<PageNotFound/>}/>

@@ -45,7 +45,7 @@ let {userid} = useParams()
 const retrieveProfile = async () => {
   
   const url = `${globalUrl}/users/${userid}`
-  const userView = await axios.get(url)
+  const userView = await axios.get(url,{ withCredentials: true })
   setProfileView(userView.data.data)
 }
     
@@ -56,9 +56,15 @@ useEffect(() => {
 
 
 
-
+console.log(userView.id)
 return (
-  <div key={userView.id}> <Link to={`/user/${userView.id}`} > id: {userView.id} email: {userView.email} password:{userView.password}</Link> </div>
+  <>
+     {userView.id === undefined
+           ? <h3>You must register or login as the correct user to do that</h3>
+           : <div key={userView.id}> id: {userView.id} email: {userView.email} </div>
+          }
+    
+  </>
 )
 }
 
