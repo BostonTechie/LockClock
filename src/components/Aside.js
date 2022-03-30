@@ -1,5 +1,5 @@
 import React from 'react'
-import '../views/aside.css'
+import '../styled/css/aside.css'
 import Box from '@mui/material/Box';
 import { createSvgIcon } from '@mui/material/utils';
 import Nav from "react-bootstrap/Nav"

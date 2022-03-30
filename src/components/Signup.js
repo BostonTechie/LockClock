@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import '../styled/login.css';
+import '../styled/css/login.css';
 import PropTypes from 'prop-types';
 import { useAppContext } from "../global/Session";
 import Logout from "./Logout";

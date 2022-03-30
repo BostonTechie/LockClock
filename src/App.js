@@ -15,7 +15,7 @@ import Login from './components/Login';
 import Signup from './components/Signup';
 import Home from './views/Home';
 import Logout from './components/Logout';
-import './styled/App.css'
+import './styled/css/App.css'
 
 
 function App() {

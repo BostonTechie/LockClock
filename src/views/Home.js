@@ -1,6 +1,6 @@
 
 import React from "react";
-import "../styled/Home.css";
+import "../styled/css/Home.css";
 import Logout from "../components/Logout";
 
 export default function Home() {
