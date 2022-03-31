@@ -14,9 +14,10 @@ import {
     Paper,
     Grid,
     styled,
-    Input
+    Input,
+    Typography
   } from "@mui/material";
-import { MonetizationOnSharp } from '@mui/icons-material';
+import { ContentCutOutlined, MonetizationOnSharp } from '@mui/icons-material';
 
   
   const Item = styled(Paper)(({ theme }) => ({
@@ -28,13 +29,29 @@ import { MonetizationOnSharp } from '@mui/icons-material';
   }));
 
 const Timesheet = () => {
-    
+    const [billable_time, setBill] = useState(false);
+    const [color_bill, setBillColor] = useState();
+
+
+    const handleBill = async e => {
+        e.preventDefault();
+        if (billable_time === false) {
+            setBill(true)
+            setBillColor("")
+        }
+        if (billable_time === true) {
+          
+            setBill(false)
+            setBillColor("primary")
+   
+        }
+    }
 
   return (<div>
   <Box sx={{ flexGrow: 1 }}>
         <Grid
           container
-          spacing={{ xs: 2, md: 1 }}
+          spacing={{ xs: 2, md: 2 }}
           columns={{ xs: 4, sm: 8, md: 12 }}
           sx={{ border: 2 }}>
           
@@ -44,7 +61,7 @@ const Timesheet = () => {
               md={8}>
                 <Box sx={{ border: 2,
                     bgcolor: 'text.disabled' }}>
-                    <TextField fullWidth id="fullWidth" label="date stuff" variant="outlined" />
+                    <Typography variant="h4" component="h4" >date</Typography>
                 </Box>
             </Grid>
 
@@ -54,15 +71,15 @@ const Timesheet = () => {
               md={4}>
                 <Box sx={{ border: 2,
                     bgcolor: 'text.disabled' }}>
-                    <TextField fullWidth id="fullWidth" label="totals" variant="outlined" />
+                    <Typography variant="h4" component="h4" >total</Typography>
                 </Box>
             </Grid>
 
             <Grid item
               xs={3}
               sm={3}
-              md={5.5}>
-                <Box sx={{ border: 2 }}>
+              md={5.2}>
+                <Box sx={{ }}>
                 <TextField fullWidth id="fullWidth" label="What are you working on?" variant="outlined" />
                 </Box>
             </Grid>
@@ -72,7 +89,7 @@ const Timesheet = () => {
               sm={.6}
               md={.6}>
                 <Box sx={{  }}>
-                <MonetizationOnSharp sx={{ fontSize: 40 }}></MonetizationOnSharp>
+                <MonetizationOnSharp color={color_bill}  onClick={handleBill}sx={{ fontSize: 40 }}></MonetizationOnSharp>
                 </Box>
             </Grid>
             <Grid item
