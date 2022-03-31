@@ -3,20 +3,16 @@ import '../styled/css/index.css'
 import { useState, useContext } from "react";
 import TextField from '@mui/material/TextField';
 import { Link } from "react-router-dom";
+import Form from "react-bootstrap/Form";
 import Icon from "@mdi/react";
 import Stack from '@mui/material/Stack';
 import { TimePicker } from '@material-ui/lab';
 import Timelog from '../components/Timelog';
 import Calanderlog from '../components/Calanderlog';
+import {useNavigate} from 'react-router-dom';
+import Button from "react-bootstrap/Button";
 import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
-import {
-    Box,
-    Paper,
-    Grid,
-    styled,
-    Input,
-    Typography
-  } from "@mui/material";
+import {Box,Paper,Grid,styled,Input,Typography} from "@mui/material";
 import { ContentCutOutlined, MonetizationOnSharp } from '@mui/icons-material';
 
   
@@ -29,17 +25,25 @@ import { ContentCutOutlined, MonetizationOnSharp } from '@mui/icons-material';
   }));
 
 const Timesheet = () => {
-    const [billable_time, setBill] = useState(false);
+    
+    //set State for the time sheet variables
+    const [billable, setBill] = useState(false);
     const [color_bill, setBillColor] = useState();
+    const [workday_start, setStartTime] = useState();
+    const [workday_end, setStopTime] = useState()
+    const [calendar_day, setTimeDay] = useState("")
+    const [notes, setNotes] = useState("")
 
+    const baseURL = process.env.REACT_APP_API
+    const navigate = useNavigate();
 
-    const handleBill = async e => {
+    function handleBill(e) {
         e.preventDefault();
-        if (billable_time === false) {
+        if (billable === false) {
             setBill(true)
             setBillColor("")
         }
-        if (billable_time === true) {
+        if (billable === true) {
           
             setBill(false)
             setBillColor("primary")
@@ -47,7 +51,23 @@ const Timesheet = () => {
         }
     }
 
+
+    async function handleSubmit(credentials) {
+      return fetch(`${baseURL}/timesheet/`, {
+        credentials: 'include',
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(credentials)
+      })
+        .then(data => data.json())
+     
+     }
+  
+
   return (<div>
+    <Form onSubmit={handleSubmit}>
   <Box sx={{ flexGrow: 1 }}>
         <Grid
           container
@@ -61,7 +81,7 @@ const Timesheet = () => {
               md={8}>
                 <Box sx={{ border: 2,
                     bgcolor: 'text.disabled' }}>
-                    <Typography variant="h4" component="h4" >date</Typography>
+                    <Typography variant="h4" component="h4" >Timesheet day: {calendar_day}</Typography>
                 </Box>
             </Grid>
 
@@ -80,7 +100,7 @@ const Timesheet = () => {
               sm={3}
               md={5.2}>
                 <Box sx={{ }}>
-                <TextField fullWidth id="fullWidth" label="What are you working on?" variant="outlined" />
+                <Form.Control value={notes} onChange={(e) => setNotes(e.target.value)} fullWidth id="fullWidth" label="What are you working on?" variant="outlined" />
                 </Box>
             </Grid>
 
@@ -97,7 +117,7 @@ const Timesheet = () => {
               sm={1}
               md={1.75}>
                 <Box sx={{  }}>
-                <Timelog></Timelog>
+                <Timelog  onChange={(e) => setStartTime(e.target.value)}></Timelog>
                 </Box>
             </Grid>
             <Grid item
@@ -105,7 +125,7 @@ const Timesheet = () => {
               sm={1}
               md={1.75}>
                 <Box sx={{  }}>
-                <Timelog></Timelog>
+                <Timelog onChange={(e) => setStopTime(e.target.value) }></Timelog>
                 </Box>
             </Grid>
             <Grid item
@@ -118,6 +138,9 @@ const Timesheet = () => {
             </Grid>
         </Grid>
     </Box>
+
+    <Button block size="lg" type="submit" >Post time</Button>
+    </Form>
     </div>
     )
 }

@@ -8,6 +8,7 @@ const Timelog = () => {
         <TextField
             id="time"
             type="time"
+            defaultValue="07:30"
             InputLabelProps={{
             shrink: true,
             }}

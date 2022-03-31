@@ -8,6 +8,7 @@ const Calanderlog = () => {
       <TextField
             id="date"
             type="date"
+            defaultValue="2022-01-01"
             sx={{ width: 220 }}
             InputLabelProps={{
             shrink: true,}}
