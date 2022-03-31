@@ -3,10 +3,13 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import '../styled/css/login.css';
 import PropTypes from 'prop-types';
+import {useNavigate} from 'react-router-dom';
 import { useAppContext } from "../global/Session";
 import Logout from "./Logout";
 
 export default function Signup() {
+
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { userHasAuthenticated } = useAppContext(false);
@@ -27,6 +30,7 @@ export default function Signup() {
       body: JSON.stringify(credentials)
     })
       .then(data => data.json())
+      .then(navigate('/timesheet'))
    }
 
   const handleSubmit = async e => {

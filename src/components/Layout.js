@@ -9,8 +9,13 @@ const Layout = ({ children }) => {
 
   return (
     <div>
-        {(location.pathname !== "/") ? <Aside /> : null}
-    
+        {(location.pathname !== "/" &&
+        location.pathname !== "/login"&& 
+        location.pathname !== "/signup"&& 
+        location.pathname !== "/logout") ? 
+        <Aside /> : null}
+
+
         {children}
     </div>
   )

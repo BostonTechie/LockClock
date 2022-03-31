@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import {useNavigate} from 'react-router-dom';
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import '../styled/css/login.css'
@@ -7,6 +8,7 @@ import { useAppContext } from "../global/Session";
 import Logout from "./Logout";
 
 export default function Login() {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { userHasAuthenticated } = useAppContext(false);
@@ -27,6 +29,7 @@ export default function Login() {
       body: JSON.stringify(credentials)
     })
       .then(data => data.json())
+      .then(navigate('/timesheet'))
    }
 
   const handleSubmit = async e => {

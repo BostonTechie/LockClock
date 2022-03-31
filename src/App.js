@@ -15,6 +15,7 @@ import Login from './components/Login';
 import Signup from './components/Signup';
 import Home from './views/Home';
 import Logout from './components/Logout';
+import Timesheet from './views/Timesheet';
 import './styled/css/App.css'
 
 
@@ -50,10 +51,11 @@ return (
     <AppContext.Provider value={{ isAuthenticated, userHasAuthenticated }}>
       <Routes>
         <Route path="/" element={<Home/>}/>
+        <Route path='/timesheet' element={<Timesheet/>}/>
         <Route path='/login' element={<Login/>}/>
         <Route path='/signup' element={<Signup/>}/>
         <Route path='/logout' element={<Logout/>}/>
-        <Route path='/show' element={<UsersShow/>}/>
+               <Route path='/show' element={<UsersShow/>}/>
         <Route path='/profile/:userid' element={<UserProfile/>}/>
         <Route path="*" element={<PageNotFound/>}/>
       </Routes>

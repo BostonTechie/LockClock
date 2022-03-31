@@ -7,3 +7,29 @@ aside {
     background-color: lightgray;
     height: 100vh;
   }
+
+
+  @media only screen and (max-width: 600px){
+    /*Big smartphones [426px -> 600px]*/
+    aside {
+      width: 18%;
+      padding-left: 0px;
+      margin-left: 0px;
+      Margin-top: 1rem;
+      float: left;
+      background-color: lightgray;
+      height: 100vh;
+    }
+  }
+  @media only screen and (max-width: 425px){
+    /*Small smartphones [325px -> 425px]*/
+    aside {
+      width: 18%;
+      padding-left: 0px;
+      margin-left: 0px;
+      Margin-top: 1rem;
+      float: left;
+      background-color: lightgray;
+      height: 100vh;
+    }
+  }
