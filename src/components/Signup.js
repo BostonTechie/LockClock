@@ -1,20 +1,19 @@
 import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import '../styled/css/login.css';
-import PropTypes from 'prop-types';
-import {useNavigate} from 'react-router-dom';
+import "../styled/css/login.css";
+import PropTypes from "prop-types";
+import { useNavigate } from "react-router-dom";
 import { useAppContext } from "../global/Session";
 import Logout from "./Logout";
 
 export default function Signup() {
-
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { userHasAuthenticated } = useAppContext(false);
 
-  const baseURL = process.env.REACT_APP_API
+  const baseURL = process.env.REACT_APP_API;
 
   function validateForm() {
     return email.length > 0 && password.length > 0;
@@ -22,28 +21,25 @@ export default function Signup() {
 
   async function loginUser(credentials) {
     return fetch(`${baseURL}/users/register`, {
-      credentials: 'include',
-      method: 'POST',
+      credentials: "include",
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json'
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify(credentials)
+      body: JSON.stringify(credentials),
     })
-      .then(data => data.json())
-      .then(navigate('/timesheet'))
-   }
+      .then((data) => data.json())
+      .then(navigate("/timesheet"));
+  }
 
-  const handleSubmit = async e => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    userHasAuthenticated(true)
+    userHasAuthenticated(true);
     const token = await loginUser({
       email,
-      password
+      password,
     });
-    
-    
-  }
-  
+  };
 
   return (
     <div className="Login">
@@ -69,9 +65,6 @@ export default function Signup() {
           Sign up!
         </Button>
       </Form>
-      
-
     </div>
   );
 }
-

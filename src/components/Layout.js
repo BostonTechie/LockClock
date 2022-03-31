@@ -1,24 +1,23 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import { useLocation } from 'react-router-dom';
-import Aside from './Aside';
-
+import React from "react";
+import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import Aside from "./Aside";
 
 const Layout = ({ children }) => {
-    const location = useLocation();
+  const location = useLocation();
 
   return (
     <div>
-        {(location.pathname !== "/" &&
-        location.pathname !== "/login"&& 
-        location.pathname !== "/signup"&& 
-        location.pathname !== "/logout") ? 
-        <Aside /> : null}
+      {location.pathname !== "/" &&
+      location.pathname !== "/login" &&
+      location.pathname !== "/signup" &&
+      location.pathname !== "/logout" ? (
+        <Aside />
+      ) : null}
 
-
-        {children}
+      {children}
     </div>
-  )
-}
+  );
+};
 
-export default Layout
+export default Layout;

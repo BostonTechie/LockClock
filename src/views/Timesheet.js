@@ -46,7 +46,6 @@ const Timesheet = () => {
   }
 
   function handleTotal() {
-  
     if (workday_start.length > 0 && workday_end.length > 0) {
       let splitbegin = workday_start.split(":");
       let splitend = workday_end.split(":");
@@ -94,14 +93,14 @@ const Timesheet = () => {
 
   return (
     <div>
-        <Form onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmit}>
         <Box sx={{ marginTop: 7, flexGrow: 1 }}>
           <Grid
             container
             spacing={{ xs: 2, md: 2 }}
             columns={{ xs: 4, sm: 8, md: 12 }}
-            sx={{ border: 2 }}>
-              
+            sx={{ border: 2 }}
+          >
             <Grid item xs={3} sm={6} md={8}>
               <Box sx={{ border: 2, bgcolor: "text.disabled" }}>
                 <Typography variant="h4" component="h4">
@@ -170,10 +169,10 @@ const Timesheet = () => {
                       step: 60, // 1 min
                     }}
                     sx={{ width: 150 }}
-                    onChange={
-                      (e) => {setStopTime(e.target.value); handleTotal()}
-                    }
-                   
+                    onChange={(e) => {
+                      setStopTime(e.target.value);
+                      handleTotal();
+                    }}
                   />
                 </Stack>
               </Box>
