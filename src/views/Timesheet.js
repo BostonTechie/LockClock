@@ -1,13 +1,13 @@
 import React from 'react'
 import '../styled/css/index.css'
+import Stack from '@mui/material/Stack';
 import { useState, useContext } from "react";
 import TextField from '@mui/material/TextField';
 import { Link } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import Icon from "@mdi/react";
-import Stack from '@mui/material/Stack';
 import { TimePicker } from '@material-ui/lab';
-import Timelog from '../components/Timelog';
+
 import Calanderlog from '../components/Calanderlog';
 import {useNavigate} from 'react-router-dom';
 import Button from "react-bootstrap/Button";
@@ -29,9 +29,9 @@ const Timesheet = () => {
     //set State for the time sheet variables
     const [billable, setBill] = useState(false);
     const [color_bill, setBillColor] = useState();
-    const [workday_start, setStartTime] = useState();
-    const [workday_end, setStopTime] = useState()
-    const [calendar_day, setTimeDay] = useState("")
+    const [workday_start, setStartTime] = useState("09:00:00");
+    const [workday_end, setStopTime] = useState("19:00:00")
+    const [calendar_day, setCalendarDay] = useState("")
     const [notes, setNotes] = useState("")
 
     const baseURL = process.env.REACT_APP_API
@@ -41,30 +41,43 @@ const Timesheet = () => {
         e.preventDefault();
         if (billable === false) {
             setBill(true)
-            setBillColor("")
+            setBillColor("primary")
         }
         if (billable === true) {
           
             setBill(false)
-            setBillColor("primary")
+            setBillColor("")
    
         }
     }
 
 
-    async function handleSubmit(credentials) {
+    async function postTime(postDatathis) {
       return fetch(`${baseURL}/timesheet/`, {
         credentials: 'include',
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(credentials)
+        body: JSON.stringify(postDatathis)
       })
         .then(data => data.json())
      
      }
   
+
+     const handleSubmit = async e => {
+      e.preventDefault();
+      const postDatathis = await postTime({
+        notes,
+        billable,
+        workday_start,
+        workday_end,
+        calendar_day,
+      });
+    }
+
+        
 
   return (<div>
     <Form onSubmit={handleSubmit}>
@@ -100,7 +113,7 @@ const Timesheet = () => {
               sm={3}
               md={5.2}>
                 <Box sx={{ }}>
-                <Form.Control value={notes} onChange={(e) => setNotes(e.target.value)} fullWidth id="fullWidth" label="What are you working on?" variant="outlined" />
+                <Form.Control value={notes} onChange={(e) => setNotes(e.target.value)}  id="fullWidth" label="What are you working on?" variant="outlined" />
                 </Box>
             </Grid>
 
@@ -117,7 +130,21 @@ const Timesheet = () => {
               sm={1}
               md={1.75}>
                 <Box sx={{  }}>
-                <Timelog  onChange={(e) => setStartTime(e.target.value)}></Timelog>
+                <Stack spacing={3}>
+        <TextField
+            id="time"
+            type="time"
+            defaultValue="09:00"
+            InputLabelProps={{
+            shrink: true,
+            }}
+            inputProps={{
+            step: 60, // 1 min
+            }}
+            sx={{ width: 150 }}
+            onChange={(e) => setStartTime(e.target.value) }
+        />
+    </Stack>
                 </Box>
             </Grid>
             <Grid item
@@ -125,7 +152,21 @@ const Timesheet = () => {
               sm={1}
               md={1.75}>
                 <Box sx={{  }}>
-                <Timelog onChange={(e) => setStopTime(e.target.value) }></Timelog>
+                <Stack spacing={3}>
+        <TextField
+            id="time"
+            type="time"
+            defaultValue="17:00"
+            InputLabelProps={{
+            shrink: true,
+            }}
+            inputProps={{
+            step: 60, // 1 min
+            }}
+            sx={{ width: 150 }}
+            onChange={(e) => setStopTime(e.target.value) }
+        />
+    </Stack>
                 </Box>
             </Grid>
             <Grid item
@@ -133,7 +174,16 @@ const Timesheet = () => {
               sm={1}
               md={1.75}>
                 <Box sx={{  }}>
-                <Calanderlog></Calanderlog>
+                <Stack spacing={3}>
+      <TextField
+            id="date"
+            type="date"
+            sx={{ width: 220 }}
+            InputLabelProps={{
+            shrink: true,}}
+            onChange={(e) => setCalendarDay(e.target.value) }
+        />
+    </Stack>
                 </Box>
             </Grid>
         </Grid>
