@@ -94,8 +94,8 @@ const Timesheet = () => {
 
   return (
     <div>
-      <Form onSubmit={handleSubmit}>
-        <Box sx={{ flexGrow: 1 }}>
+        <Form onSubmit={handleSubmit}>
+        <Box sx={{ marginTop: 7, flexGrow: 1 }}>
           <Grid
             container
             spacing={{ xs: 2, md: 2 }}
@@ -110,7 +110,7 @@ const Timesheet = () => {
               </Box>
             </Grid>
 
-            <Grid item xs={1} sm={1} md={4}>
+            <Grid item xs={1} sm={1} md={3.5}>
               <Box sx={{ border: 2, bgcolor: "text.disabled" }}>
                 <Typography variant="h4" component="h4">
                   total hrs: {total_time_day}
@@ -171,8 +171,7 @@ const Timesheet = () => {
                     }}
                     sx={{ width: 150 }}
                     onChange={
-                      ((e) => setStopTime(e.target.value), handleTotal()
-                    )
+                      (e) => {setStopTime(e.target.value); handleTotal()}
                     }
                    
                   />
