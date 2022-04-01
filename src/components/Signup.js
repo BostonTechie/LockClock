@@ -16,7 +16,7 @@ export default function Signup() {
   const baseURL = process.env.REACT_APP_API;
 
   function validateForm() {
-    return email.length > 0 && password.length > 0;
+    return email.length  > 0 && password.length > 0;
   }
 
   async function loginUser(credentials) {
