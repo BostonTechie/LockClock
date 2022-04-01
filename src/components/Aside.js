@@ -39,6 +39,7 @@ const Aside = () => {
       </StyledFab>
       <Box sx={{ flexGrow: 1 }} />
       <IconButton color="inherit">
+        
         <SearchIcon />
       </IconButton>
       <IconButton color="inherit">
