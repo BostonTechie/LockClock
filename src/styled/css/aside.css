@@ -1,4 +1,4 @@
-aside {
+.aside {
     width: 10%;
     padding-left: 0px;
     margin-left: 0px;
@@ -11,7 +11,7 @@ aside {
 
   @media only screen and (max-width: 600px){
     /*Big smartphones [426px -> 600px]*/
-    aside {
+    .aside {
       width: 18%;
       padding-left: 0px;
       margin-left: 0px;
