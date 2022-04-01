@@ -20,6 +20,7 @@ import "./styled/css/App.css";
 
 function App() {
   const [isAuthenticated, userHasAuthenticated] = useState(false);
+  const [apiData, setApiData] = useState()
 
   return (
     <div>
@@ -45,7 +46,7 @@ function App() {
         </Navbar.Collapse>
       </Navbar>
 
-      <AppContext.Provider value={{ isAuthenticated, userHasAuthenticated }}>
+      <AppContext.Provider value={{ isAuthenticated, userHasAuthenticated,apiData,setApiData }}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/timesheet" element={<Aside />} />

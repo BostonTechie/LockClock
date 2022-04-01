@@ -1,8 +1,6 @@
-import React from "react";
+import React, { useState, useEffect }from "react";
 import "../styled/css/index.css";
-import "../styled/css/smaller.css";
 import Stack from "@mui/material/Stack";
-import { useState, useContext } from "react";
 import TextField from "@mui/material/TextField";
 import { Link } from "react-router-dom";
 import Form from "react-bootstrap/Form";
@@ -12,6 +10,7 @@ import Button from "react-bootstrap/Button";
 import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
 import { Box, Paper, Grid, styled, Input, Typography, Container } from "@mui/material";
 import { ContentCutOutlined, MonetizationOnSharp } from "@mui/icons-material";
+
 
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -24,13 +23,16 @@ const Item = styled(Paper)(({ theme }) => ({
 
 const Timesheet = () => {
   //set State for the time sheet variables
-  const [billable, setBill] = useState(false);
+  
+  const [notes, setNotes] = useState("usd")
+  const [billable, setBilltf] = useState(false);
   const [color_bill, setBillColor] = useState();
-  const [workday_start, setStartTime] = useState("");
-  const [workday_end, setStopTime] = useState("");
+  const [workday_start, setStartTime] = useState("usd");
+  const [workday_end, setStopTime] = useState("usd");
   const [calendar_day, setCalendarDay] = useState("Use box below");
-  const [notes, setNotes] = useState("");
   const [total_time_day, setTotalTime] = useState(0);
+  const [hourly_rate, setHourRate] = useState(0);
+  const [total_bill, setBillCharge] = useState(0);
 
   const baseURL = process.env.REACT_APP_API;
   const navigate = useNavigate();
@@ -38,11 +40,11 @@ const Timesheet = () => {
   function handleBill(e) {
     e.preventDefault();
     if (billable === false) {
-      setBill(true);
+      setBilltf(true);
       setBillColor("primary");
     }
     if (billable === true) {
-      setBill(false);
+      setBilltf(false);
       setBillColor("");
     }
   }
@@ -85,11 +87,14 @@ const Timesheet = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const postDatathis = await postTime({
-      notes,
+      notes, 
+      total_bill,
+      total_time_day,
       billable,
+      hourly_rate,
       workday_start,
       workday_end,
-      calendar_day,
+      calendar_day
     });
   };
 
