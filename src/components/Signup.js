@@ -62,7 +62,7 @@ export default function Signup() {
           />
         </Form.Group>
         <Button block size="lg" type="submit" disabled={!validateForm()}>
-          Sign up!
+         Sign up!
         </Button>
       </Form>
     </div>
