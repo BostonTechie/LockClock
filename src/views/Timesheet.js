@@ -1,5 +1,6 @@
 import React from "react";
 import "../styled/css/index.css";
+import "../styled/css/smaller.css";
 import Stack from "@mui/material/Stack";
 import { useState, useContext } from "react";
 import TextField from "@mui/material/TextField";
@@ -9,8 +10,9 @@ import Icon from "@mdi/react";
 import { useNavigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
-import { Box, Paper, Grid, styled, Input, Typography } from "@mui/material";
+import { Box, Paper, Grid, styled, Input, Typography, Container } from "@mui/material";
 import { ContentCutOutlined, MonetizationOnSharp } from "@mui/icons-material";
+
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -92,12 +94,12 @@ const Timesheet = () => {
   };
 
   return (
-    <div>
+    <React.Fragment>
       <Form onSubmit={handleSubmit}>
-        <Box sx={{ marginTop: 7, flexGrow: 1 }}>
+        <Box sx={{ marginTop: 7, flexGrow: 1, marginLeft: 10,marginRight: 10 }}>
           <Grid
             container
-            spacing={{ xs: 2, md: 2 }}
+            spacing={{ xs: 2,}}
             columns={{ xs: 4, sm: 8, md: 12 }}
             sx={{ border: 2 }}
           >
@@ -117,7 +119,7 @@ const Timesheet = () => {
               </Box>
             </Grid>
 
-            <Grid item xs={3} sm={3} md={5.2}>
+            <Grid item xs={3} sm={3} md={4}>
               <Box sx={{}}>
                 <Form.Control
                   value={notes}
@@ -179,6 +181,7 @@ const Timesheet = () => {
             </Grid>
             <Grid item xs={1} sm={1} md={1.75}>
               <Box sx={{}}>
+                
                 <Stack spacing={3}>
                   <TextField
                     id="date"
@@ -189,17 +192,20 @@ const Timesheet = () => {
                     }}
                     onChange={(e) => setCalendarDay(e.target.value)}
                   />
+                  
                 </Stack>
               </Box>
             </Grid>
+            <Grid item xs={1} sm={1} md={1.75}>
+              <Button sx={{right:0  }}disabled={!validateForm()} size="lg" type="submit">
+                   Post time
+                </Button>
+            </Grid>
           </Grid>
         </Box>
-
-        <Button disabled={!validateForm()} block size="lg" type="submit">
-          Post time
-        </Button>
       </Form>
-    </div>
+      </React.Fragment>
+    
   );
 };
 

@@ -13,6 +13,7 @@ import PageNotFound from "./views/PageNotFound";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import Home from "./views/Home";
+import Aside from "./components/Aside";
 import Logout from "./components/Logout";
 import Timesheet from "./views/Timesheet";
 import "./styled/css/App.css";
@@ -21,7 +22,7 @@ function App() {
   const [isAuthenticated, userHasAuthenticated] = useState(false);
 
   return (
-    <div className="App container py-3">
+    <div>
       <Navbar collapseOnSelect bg="light" expand="md" className="mb-3">
         <LinkContainer to="/">
           <Navbar.Brand className="font-weight-bold text-muted">
@@ -47,7 +48,7 @@ function App() {
       <AppContext.Provider value={{ isAuthenticated, userHasAuthenticated }}>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/timesheet" element={<Timesheet />} />
+          <Route path="/timesheet" element={<Aside />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/logout" element={<Logout />} />
