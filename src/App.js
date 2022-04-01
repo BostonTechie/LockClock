@@ -53,7 +53,7 @@ function App() {
           <Route path="/logout" element={<Logout />} />
           <Route path="/show" element={<UsersShow />} />
           <Route path="/profile/:userid" element={<UserProfile />} />
-          <Route path="*" element={<PageNotFound />} />
+          <Route path="*" element={<PageNotFound />}/>
         </Routes>
       </AppContext.Provider>
     </div>
