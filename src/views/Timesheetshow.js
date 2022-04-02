@@ -50,6 +50,12 @@ const Timesheetshow = () => {
       navigate('/timedata');
     };
 
+    const handleEdit = async (id) => {
+      const response = await axios.delete(`${baseURL}/timesheet/${id}`)
+      console.log('here is your id', id)
+      navigate('/timedata');
+    };
+
   return (
     <div key={q.id}>
       <Box sx={{ p: 2, border: 2, backgroundColor: '#c3fdff', }}>
@@ -74,7 +80,10 @@ const Timesheetshow = () => {
     <Item>total_bill: ${q.total_bill}</Item>
   </Grid>
   <Grid item xs={1}>
-    <Item><Chip key={q.id} label="Delete" onClick={() => handleDelete(q.id)} /></Item>
+    <Item sx={{backgroundColor: '#c3fdff', boxShadow: 0}}><Chip sx={{backgroundColor: 'white'}}key={q.id} label="Edit" onClick={() => handleEdit(q.id)} /></Item>
+  </Grid>
+  <Grid item xs={1}>
+    <Item sx={{backgroundColor: '#c3fdff', boxShadow: 0}}><Chip sx={{backgroundColor: '#ba6b6c'}}key={q.id} label="Delete" onClick={() => handleDelete(q.id)} /></Item>
   </Grid>
 </Grid>
 </Box>
