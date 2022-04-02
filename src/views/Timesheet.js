@@ -31,7 +31,9 @@ const Timesheet = () => {
   const [calendar_day, setCalendarDay] = useState("Use box below");
   const [notes, setNotes] = useState("");
   const [total_time_day, setTotalTime] = useState(0);
+  const [hourly_rate, setRate] = useState(0);
   const [anchorEl, setAnchorEl] = useState(null);
+  const [total_bill, setEarnings] = useState(null);
 
 
   const baseURL = process.env.REACT_APP_API;
@@ -42,6 +44,7 @@ const Timesheet = () => {
     if (billable === false) {
       setBill(true);
       setBillColor("primary");
+      setAnchorEl(e.currentTarget)
     }
     if (billable === true) {
       setBill(false);
@@ -92,13 +95,14 @@ const Timesheet = () => {
       workday_start,
       workday_end,
       calendar_day,
+      hourly_rate,
+      total_bill
+
     });
   };
 
 //popover config 99-106
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
+
   const handleClose = () => {
     setAnchorEl(null);
   };
@@ -146,7 +150,7 @@ const Timesheet = () => {
 
             <Grid item xs={0.6} sm={0.6} md={0.6}>
               <Box sx={{}}>
-              <Button aria-describedby={id} variant="contained" onClick={handleClick}>
+              <Button aria-describedby={id} variant="contained" onClick={handleBill}>
               <MonetizationOnSharp
                   color={color_bill}
                   onClick={handleBill}
@@ -163,7 +167,12 @@ const Timesheet = () => {
           horizontal: 'left',
         }}
       >
-        <Typography sx={{ p: 2 }}>The content of the Popover.</Typography>
+        <Typography sx={{ p: 2 }}><Form.Control
+                  value={hourly_rate}
+                  onChange={(e) => setRate(e.target.value)}
+                  id="fullWidth"
+                  variant="outlined"
+                />Enter Hourly rate:</Typography>
       </Popover>
                 
               </Box>
