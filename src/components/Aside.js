@@ -2,11 +2,13 @@ import React from 'react'
 import '../styled/css/aside.css'
 import AccessAlarmIcon from '@mui/icons-material/AccessAlarm';
 import { createTheme } from '@mui/material/styles';
+import {useNavigate} from 'react-router-dom';
 import Divider from "@material-ui/core/Divider";
 import { AppBar, Button, CssBaseline } from "@material-ui/core";
 import Box from "@material-ui/core/Box";
 import { sizing } from '@mui/system'
 import Timesheet from '../views/Timesheet'
+
 
 
 const useStyles = createTheme({
@@ -26,7 +28,12 @@ const useStyles = createTheme({
 
 const Aside = () => {
 
+  const navigate = useNavigate();
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    navigate('/timedata');
+  };
 
   return (
     <div>
@@ -35,8 +42,9 @@ const Aside = () => {
         width: "100vw",}}>
         <Box flexGrow={0}>
           <AppBar elevation={0} position="sticky">
-            <div>Left</div>
-            <div>appBar</div>
+            <Divider />
+            <AccessAlarmIcon onClick={handleSubmit} />
+              Reports
             <Button>try me</Button>
             <Divider />
             <Button>try me2</Button>
