@@ -9,6 +9,8 @@ const Timesheetshow = () => {
   const baseURL = process.env.REACT_APP_API;
   const [timeShow, settimeShow] = useState([]);
 
+
+
   const retriveTime = async () => {
     const url = `${baseURL}/timesheet`;
     const timeData = await axios.get(url, { withCredentials: true });
@@ -37,11 +39,15 @@ const Timesheetshow = () => {
     textAlign: 'center',
     color: theme.palette.text.secondary,
   }));
-  
-  const userDisplay = timeShow?.map((q) => {
+  const navigate = useNavigate();
 
-    const handleDelete = () => {
-      console.info('You clicked the delete icon.');
+  const userDisplay = timeShow?.map((q) => {
+    
+
+    const handleDelete = async (id) => {
+      const response = await axios.delete(`${baseURL}/timesheet/${id}`)
+      console.log('here is your id', id)
+      navigate('/timedata');
     };
 
   return (
@@ -68,7 +74,7 @@ const Timesheetshow = () => {
     <Item>total_bill: ${q.total_bill}</Item>
   </Grid>
   <Grid item xs={1}>
-    <Item><Chip label="Deletable" onDelete={handleDelete} /></Item>
+    <Item><Chip key={q.id} label="Delete" onClick={() => handleDelete(q.id)} /></Item>
   </Grid>
 </Grid>
 </Box>
