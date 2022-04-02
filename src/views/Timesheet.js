@@ -45,10 +45,12 @@ const Timesheet = () => {
       setBill(true);
       setBillColor("primary");
       setAnchorEl(e.currentTarget)
+      setEarnings(0)
     }
     if (billable === true) {
       setBill(false);
       setBillColor("");
+      
     }
   }
 
@@ -67,17 +69,19 @@ const Timesheet = () => {
       let total_time2 = total_time.toFixed(2)
       setTotalTime(total_time2);
 
-      if (calendar_day !== "Use box below"){
+      if (calendar_day !== "Use box below" && billable === true){
         let myInvoice = total_time_day *hourly_rate
+        myInvoice = myInvoice.toFixed(2)
         setEarnings(myInvoice)
+        
       }
     }
   }
 
   function validateForm() {
     return (
-      workday_start.length > 0 &&
-      workday_end.length > 0 &&
+      workday_start &&
+      workday_end &&
       calendar_day !== "Use box below"
     );
   }
