@@ -102,10 +102,10 @@ const Timesheet = () => {
     const postDatathis = await postTime({
       notes,
       billable,
+      hourly_rate,
       workday_start,
       workday_end,
       calendar_day,
-      hourly_rate,
       total_bill
 
     });

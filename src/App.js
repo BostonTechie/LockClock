@@ -16,6 +16,7 @@ import Home from "./views/Home";
 import Aside from "./components/Aside";
 import Logout from "./components/Logout";
 import Timesheet from "./views/Timesheet";
+import Timesheetshow from "./views/Timesheetshow";
 import "./styled/css/App.css";
 
 function App() {
@@ -52,6 +53,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/logout" element={<Logout />} />
+          <Route path="/timedata" element={<Timesheetshow />} />
           <Route path="/show" element={<UsersShow />} />
           <Route path="/profile/:userid" element={<UserProfile />} />
           <Route path="*" element={<PageNotFound />}/>
