@@ -26,14 +26,14 @@ const Timesheet = () => {
   //set State for the time sheet variables
   const [billable, setBill] = useState(false);
   const [color_bill, setBillColor] = useState();
-  const [workday_start, setStartTime] = useState("");
-  const [workday_end, setStopTime] = useState("");
+  const [workday_start, setStartTime] = useState();
+  const [workday_end, setStopTime] = useState();
   const [calendar_day, setCalendarDay] = useState("Use box below");
   const [notes, setNotes] = useState("");
   const [total_time_day, setTotalTime] = useState(0);
   const [hourly_rate, setRate] = useState(0);
   const [anchorEl, setAnchorEl] = useState(null);
-  const [total_bill, setEarnings] = useState(null);
+  const [total_bill, setEarnings] = useState(0);
 
 
   const baseURL = process.env.REACT_APP_API;
@@ -53,7 +53,7 @@ const Timesheet = () => {
   }
 
   function handleTotal() {
-    if (workday_start.length > 0 && workday_end.length > 0) {
+    if (workday_start && workday_end) {
       let splitbegin = workday_start.split(":");
       let splitend = workday_end.split(":");
 
@@ -64,7 +64,13 @@ const Timesheet = () => {
       let total_min = Math.abs(total_min_neg);
       let covertMIntoHour = total_min / 60;
       let total_time = total_hours + covertMIntoHour;
-      setTotalTime(total_time);
+      let total_time2 = total_time.toFixed(2)
+      setTotalTime(total_time2);
+
+      if (calendar_day !== "Use box below"){
+        let myInvoice = total_time_day *hourly_rate
+        setEarnings(myInvoice)
+      }
     }
   }
 
@@ -123,7 +129,7 @@ const Timesheet = () => {
             <Grid item xs={3} sm={6} md={8}>
               <Box sx={{ border: 2, bgcolor: "text.disabled" }}>
                 <Typography variant="h4" component="h4">
-                  Timesheet day: {calendar_day}
+                  Timesheet day: {calendar_day}  ${total_bill}
                 </Typography>
               </Box>
             </Grid>
