@@ -11,8 +11,8 @@ import { useNavigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
 import { Box, Paper, Grid, styled, Input, Typography, Container } from "@mui/material";
-import { ContentCutOutlined, MonetizationOnSharp } from "@mui/icons-material";
-
+import { MonetizationOnSharp } from "@mui/icons-material";
+import Popover from '@mui/material/Popover';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -31,6 +31,8 @@ const Timesheet = () => {
   const [calendar_day, setCalendarDay] = useState("Use box below");
   const [notes, setNotes] = useState("");
   const [total_time_day, setTotalTime] = useState(0);
+  const [anchorEl, setAnchorEl] = useState(null);
+
 
   const baseURL = process.env.REACT_APP_API;
   const navigate = useNavigate();
@@ -93,6 +95,17 @@ const Timesheet = () => {
     });
   };
 
+//popover config 99-106
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+  const open = Boolean(anchorEl);
+  const id = open ? 'simple-popover' : undefined;
+
+
   return (
     <React.Fragment>
       <Form onSubmit={handleSubmit}>
@@ -133,11 +146,26 @@ const Timesheet = () => {
 
             <Grid item xs={0.6} sm={0.6} md={0.6}>
               <Box sx={{}}>
-                <MonetizationOnSharp
+              <Button aria-describedby={id} variant="contained" onClick={handleClick}>
+              <MonetizationOnSharp
                   color={color_bill}
                   onClick={handleBill}
                   sx={{ fontSize: 40 }}
                 ></MonetizationOnSharp>
+      </Button>
+      <Popover
+        id={id}
+        open={open}
+        anchorEl={anchorEl}
+        onClose={handleClose}
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'left',
+        }}
+      >
+        <Typography sx={{ p: 2 }}>The content of the Popover.</Typography>
+      </Popover>
+                
               </Box>
             </Grid>
             <Grid item xs={1} sm={1} md={1.75}>
