@@ -2,9 +2,8 @@ import React from "react";
 import "../styled/css/index.css";
 import "../styled/css/smaller.css";
 import Stack from "@mui/material/Stack";
-import { useState, useContext } from "react";
+import { useState } from "react";
 import TextField from "@mui/material/TextField";
-import { Link } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import Icon from "@mdi/react";
 import { useNavigate } from "react-router-dom";
@@ -94,7 +93,9 @@ const Timesheet = () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(postDatathis),
-    }).then((data) => data.json());
+    }).then((data) => data.json())
+    .then (setBill(false), setStartTime(), setStopTime(), setCalendarDay("Posted!"), setNotes(""), setTotalTime(0), setRate(0), setEarnings(0))
+
   }
 
   const handleSubmit = async (e) => {
