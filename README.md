@@ -1,75 +1,56 @@
-to do get .env to work
-get an if "session" to work
-find a sql cloud for data
 
 
-# Getting Started with Create React App
+### The project idea 
+ Enter and track your team's time in the multifunctional app.  A person can easily sign into their unique account.  Users can track their time by project, by day, or by team. Time can be set as billable or not. Simple navigation to a report window where a user can see their history.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Your tech stack (frontend, backend, database)
 
-## Available Scripts
+## Built With - front end
+   
+* [React.js](https://reactjs.org/)
+* [ReactBootstrap](https://getbootstrap.com)
+* [JQuery](https://jquery.com)
+* [Material ui](https://mui.com/getting-started/installation/)
+* [Figma](https://www.figma.com/)
 
-In the project directory, you can run:
 
-### `npm start`
+### Built With - back end
+* [python](https://www.python.org/)
+* [postman](https://www.postman.com/)
+* [Postgres](https://www.postgresql.org/)
+* [flask](https://flask.palletsprojects.com/en/2.1.x/)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### List of backend models and their properties
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+-still in progress but so far I have
 
-### `npm test`
+class Timesheet(models.Model):
+    notes = CharField(max_length=150)
+    billable = BooleanField(default=False)
+    hourly_rate = DecimalField(max_digits=8, decimal_places=2, null=True)
+    workday_start =CharField(null=True)
+    workday_end = CharField(null=True)
+    calendar_day = CharField(null=True)
+    total_bill = DecimalField(max_digits=8, decimal_places=2, null=True)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+ 
+class User(UserMixin, Model):
+    email = CharField(unique=True)
+    password = CharField()
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### User stories
+ 
 
-### `npm run eject`
+- as a user I should be able to login to my account
+- as a user I should be able to set my billable rate for a project
+- as a user I should be able to log my hours and track the total over time
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- as a user I  would expect a report /dashboard where I can see and edit my previous timesheets
+- 
+### Wireframes
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+https://www.figma.com/file/sAKbGRsfI7FiLi4wKNKf6M/Untitled
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
