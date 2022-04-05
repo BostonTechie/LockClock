@@ -1,12 +1,7 @@
 <div id="top"></div>
 
-
-
-
 <!-- PROJECT SHIELDS -->
 
-*** https://www.markdownguide.org/basic-syntax/#reference-style-links
--->
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
@@ -23,10 +18,10 @@
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
-  <h3 align="center">Best-README-Template</h3>
+  <h3 align="center">Fuse Clock</h3>
 
   <p align="center">
-    An awesome README template to jumpstart your projects!
+    An easy and straighforward place to log your hours for a client
     <br />
     <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
     <br />
